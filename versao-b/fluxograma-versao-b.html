@@ -7,6 +7,7 @@
 <title>Âmbar · Fluxograma de Montagem</title>
 <style>
 :root{
+  color-scheme:dark;
   --bg:#0f1112;--bg2:#15181a;--card:#1b1f21;--card2:#22272a;--line:#2f3437;--line2:#3d4347;
   --ink:#f5f4f1;--ink2:#d4d0ca;--muted:#a19d96;
   --amber:#f39a1d;--amber2:#ffb547;--amber-ink:#201307;--amber-bg:#3a2810;
@@ -1027,7 +1028,7 @@ function openPanel(kind){
   p.querySelectorAll("[data-act=tour]").forEach(b=>b.onclick=()=>{closePanel();startTour()});
   p.querySelectorAll("[data-fs]").forEach(b=>b.onclick=()=>{S.fs=Math.min(1.4,Math.max(.85,Math.round((S.fs+ +b.dataset.fs*.1)*100)/100));save();applyFs();openPanel("menu")});
   const dIn=p.querySelector("#dIn");if(dIn){dIn.onchange=()=>{S.d=dIn.value;save();refresh()};p.querySelector("#dReset").onclick=()=>{S.d="";save();refresh();openPanel("menu")}}
-  const w=p.querySelector("#wipe");if(w)w.onclick=()=>{if(confirm("Apagar etapas, avisos, contatos e alternativas salvos neste aparelho?")){try{localStorage.removeItem(KEY)}catch(e){}location.reload()}};
+  const w=p.querySelector("#wipe");if(w)w.onclick=()=>{if(w.dataset.ok){try{localStorage.removeItem(KEY)}catch(e){}location.reload();return}w.dataset.ok=1;w.textContent="Toque de novo para apagar tudo deste aparelho";w.style.borderColor="var(--yellow)"};
   p.querySelectorAll(".chip[data-c]").forEach(b=>b.onclick=()=>{S.chip=b.dataset.c;save();renderChips();renderView();openPanel("filtros")});
   p.querySelectorAll(".chip[data-r]").forEach(b=>b.onclick=()=>{S.resp=b.dataset.r;save();renderChips();renderView();openPanel("filtros")});
   p.querySelectorAll("button[data-pg]").forEach(b=>b.onclick=()=>{closePanel();if(!sel){const s=allSubs(proj()).find(x=>x.s.pr.includes(b.dataset.pg));if(s){openSub(s.s.id,b.dataset.pg);return}}showPage(b.dataset.pg,true)});
