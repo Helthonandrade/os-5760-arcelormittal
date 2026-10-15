@@ -324,6 +324,95 @@ details.more .in{padding:0 12px 12px}
   .thumb{width:48px;height:48px}
   .stagectl button{font-size:.66rem}
 }
+/* ================= MODO SIMPLES ================= */
+.ico{width:1.4em;height:1.4em;flex:none;display:inline-block;vertical-align:middle}
+#simple{display:none}
+.simple-mode #simple{display:block}
+.simple-mode #complex{display:none}
+.s-wrap{display:flex;flex-direction:column;gap:16px;padding:16px var(--gut) 8px}
+.s-projs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.s-proj{display:flex;flex-direction:column;gap:8px;padding:8px;border:3px solid var(--line);border-radius:18px;background:var(--card);text-align:left}
+.s-proj[aria-pressed="true"]{border-color:var(--amber);background:#2a2014}
+.s-proj .pic{aspect-ratio:4/3;max-width:100%;border-radius:12px;background:#fff center/cover no-repeat}
+.s-proj b{font-size:1.05rem;line-height:1.15;padding:0 4px 4px}
+.s-big{padding:16px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.s-big .num{display:flex;align-items:baseline;gap:8px;font-size:1.05rem}
+.s-big .num b{font-size:2.2rem;line-height:1;color:var(--green)}
+.s-big .bar{height:14px;margin-top:10px}
+.s-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.s-tab{display:flex;flex-direction:column;align-items:center;gap:4px;min-height:96px;padding:10px 4px;border:3px solid var(--line);border-radius:18px;background:var(--card);font-weight:800;font-size:.95rem}
+.s-tab .ico{width:34px;height:34px}
+.s-tab span{font-size:1.4rem;line-height:1}
+.s-tab[aria-pressed="true"]{border-color:currentColor}
+.s-tab.t-fazer{color:var(--ink)}.s-tab.t-fazer[aria-pressed="true"]{background:#2a2e30}
+.s-tab.t-fazendo{color:var(--amber2)}.s-tab.t-fazendo[aria-pressed="true"]{background:var(--amber-bg)}
+.s-tab.t-pronto{color:var(--green)}.s-tab.t-pronto[aria-pressed="true"]{background:var(--green-bg)}
+.s-search{display:flex;align-items:center;gap:10px;min-height:56px;padding:0 14px;border:2px solid var(--line2);border-radius:16px;background:var(--bg2)}
+.s-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font-size:1.1rem}
+.s-search input::placeholder{color:var(--muted)}
+.s-list{display:flex;flex-direction:column;gap:12px}
+.s-card{display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;padding:10px;border:3px solid var(--line);border-radius:20px;background:var(--card);text-align:left}
+.s-card.problem{border-color:var(--yellow)}
+.s-card .thumb{width:96px;height:96px;border-radius:14px}
+.s-card .nm{font-size:1.1rem;font-weight:800;line-height:1.2}
+.s-card .who{display:flex;align-items:center;gap:6px;margin-top:6px;color:var(--ink2);font-size:.95rem}
+.s-card .when{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:.95rem;color:var(--muted)}
+.s-card .when.late{color:var(--yellow);font-weight:800}
+.s-qty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:64px;padding:8px;border-radius:14px;background:var(--bg2);text-align:center}
+.s-qty b{font-size:1.6rem;line-height:1}
+.s-qty small{font-size:.75rem;color:var(--muted);margin-top:2px}
+.s-state{display:flex;align-items:center;gap:6px;margin-top:6px;font-weight:800;font-size:.9rem}
+.s-state.st-fazer{color:var(--ink2)}.s-state.st-fazendo{color:var(--amber2)}.s-state.st-pronto{color:var(--green)}
+.s-empty{padding:28px 16px;border:2px dashed var(--line2);border-radius:18px;text-align:center;font-size:1.05rem;color:var(--ink2)}
+.s-empty .ico{width:48px;height:48px;color:var(--green);display:block;margin:0 auto 8px}
+.s-mode{align-self:center;min-height:48px;padding:0 18px;border:1px solid var(--line2);border-radius:999px;background:transparent;color:var(--muted);font-size:.9rem}
+/* tela da tarefa no modo simples */
+.simple-mode .dtabs,.simple-mode #tDetalhes,.simple-mode #tMateriais,.simple-mode #pgMore,.simple-mode #zHide{display:none!important}
+#tSimple{display:none}
+.simple-mode #tSimple{display:block}
+.simple-mode #tDesenho{display:block!important}
+.simple-mode .canvas{height:clamp(220px,42vh,460px)}
+.simple-mode .ctrl{grid-template-columns:52px 52px 1fr 1fr}
+.simple-mode .ctrl button{min-height:52px;font-size:.95rem}
+.sx{display:flex;flex-direction:column;gap:14px;padding-bottom:10px}
+.sx-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sx-box{display:flex;flex-direction:column;gap:4px;padding:14px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.sx-box span{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:.9rem;font-weight:700}
+.sx-box b{font-size:1.5rem;line-height:1.15}
+.sx-box b.small{font-size:1.1rem}
+.sx-box.late b{color:var(--yellow)}
+.sx-what{font-size:1.15rem;line-height:1.45;color:var(--ink)}
+.sx-go{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:76px;border:0;border-radius:20px;font-size:1.35rem;font-weight:900}
+.sx-go .ico{width:34px;height:34px}
+.sx-go.start{background:var(--amber);color:var(--amber-ink)}
+.sx-go.done{background:var(--green);color:var(--green-ink)}
+.sx-go.ok{background:var(--green-bg);color:#aee8c6;border:3px solid var(--green)}
+.sx-sec{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:60px;border:2px solid var(--line2);border-radius:18px;background:var(--bg2);font-size:1.05rem;font-weight:800;color:var(--ink)}
+.sx-sec .ico{width:28px;height:28px}
+.sx-sec.prob{border-color:var(--yellow);color:var(--yellow)}
+.sx-sec.prob[aria-pressed="true"]{background:var(--yellow);color:var(--yellow-ink)}
+.sx-warn{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:var(--yellow-bg);border:2px solid var(--yellow);color:#f7e7bb;font-size:1.02rem;line-height:1.4}
+.sx-warn .ico{width:32px;height:32px;color:var(--yellow)}
+.sx-warn b{display:block;color:#ffe08a;font-size:1.1rem}
+.sx-more summary{min-height:56px;font-size:1rem}
+.sx-sup{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.sx-sup b{font-size:1.15rem}
+.sx-sup .tel{font-size:1.3rem;font-weight:800;font-variant-numeric:tabular-nums;user-select:all}
+.sx-sup .supact a{min-height:56px;font-size:1.05rem}
+@media (min-width:700px){
+  .s-projs{grid-template-columns:1fr 1fr;max-width:720px}
+  .s-wrap{max-width:820px;margin:0 auto}
+  .s-list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+}
+@media (min-width:1100px){
+  .s-list{grid-template-columns:1fr 1fr 1fr}
+  .s-wrap{max-width:1180px}
+  .simple-mode .shell .detail{display:flex;position:fixed;top:0;bottom:0;right:0;left:auto;width:min(760px,60vw);height:auto;transform:translateX(100%);visibility:hidden;transition:transform .28s;z-index:40}
+  .simple-mode .shell .detail.open{transform:none;visibility:visible;box-shadow:0 0 0 100vmax #0008}
+  .simple-mode .dh .back{display:inline-grid}
+  .simple-mode .shell.split{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:380px){.s-card{grid-template-columns:76px minmax(0,1fr) auto}.s-card .thumb{width:76px;height:76px}.s-qty{min-width:54px}}
 @media print{.hdr,.tools,.chips,.views,.detail,.panel,.scrim{display:none}}
 </style>
 </head>
@@ -336,6 +425,8 @@ details.more .in{padding:0 12px 12px}
 
 <div class="shell" id="shell">
   <main class="work" id="work">
+    <section id="simple" aria-label="Tarefas"></section>
+    <div id="complex">
     <div class="sim" id="sim"><span><b>Simulação.</b> Prazos (D-n), etapas e responsáveis por função são hipotéticos. Andamento salvo só neste aparelho, sem sincronizar entre pessoas.</span><button type="button" id="simX" aria-label="Ocultar aviso">Ocultar</button></div>
 
     <div class="pad proj"><div class="seg" role="group" aria-label="Projeto" id="projSeg"></div></div>
@@ -357,6 +448,7 @@ details.more .in{padding:0 12px 12px}
     <section id="vLista" class="list" aria-label="Lista de produção"></section>
     <section id="vKanban" aria-label="Kanban" hidden></section>
     <section id="vPlanilha" aria-label="Planilha" hidden></section>
+    </div>
 
     <footer class="foot">
       <p>Concepção e desenho do produto: <b>BAITA, by Helthon Andrade.</b></p>
@@ -394,6 +486,7 @@ details.more .in{padding:0 12px 12px}
       </section>
       <section class="dsec" id="tDetalhes"></section>
       <section class="dsec" id="tMateriais"></section>
+      <section class="dsec" id="tSimple"></section>
     </div>
   </aside>
 </div>
@@ -401,7 +494,7 @@ details.more .in{padding:0 12px 12px}
 <div class="scrim" id="scrim"></div>
 <div class="panel" id="panel" role="dialog" aria-modal="true" aria-labelledby="panelTitle"></div>
 <div class="tour" id="tour" hidden><div class="spot" id="spot"></div><div class="tip" id="tip" role="dialog" aria-live="polite"></div></div>
-<div class="ask" id="ask" role="dialog" hidden><h3>Quer ver um tour rápido?</h3><p>Em 9 passos: projetos, busca, lista, Kanban, planilha, etapas, prancha e fornecedores. Dá para rever em “Como usar”, no menu.</p><div class="tb"><button type="button" id="askNo">Agora não</button><button type="button" class="go" id="askYes">Ver tour</button></div></div>
+<div class="ask" id="ask" role="dialog" hidden><h3>Quer aprender a usar?</h3><p>São poucos passos. Depois, é só tocar no menu ☰ e em “Como usar”.</p><div class="tb"><button type="button" id="askNo">Agora não</button><button type="button" class="go" id="askYes">Sim, mostrar</button></div></div>
 <div class="toast" id="toast" role="status" hidden></div>
 
 <script>
@@ -705,7 +798,7 @@ const KEY="ambar-fluxograma-b";
 
 /* ===================== estado local ===================== */
 const store={get(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}},set(v){try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}}};
-const S=Object.assign({proj:"estande",view:"lista",chip:"todas",resp:"",stage:{},attn:{},sup:{},alt:{},d:"",fs:1,simHidden:false,tourAsked:false,draw:true,open:{}},store.get());
+const S=Object.assign({mode:"simples",sq:"",proj:"estande",view:"lista",chip:"todas",resp:"",stage:{},attn:{},sup:{},alt:{},d:"",fs:1,simHidden:false,tourAsked:false,draw:true,open:{}},store.get());
 const save=()=>store.set(S);
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -765,8 +858,8 @@ function matches(i,s){
 function filtered(){const p=proj();return p.items.map(i=>({i,subs:i.subs.filter(s=>matches(i,s))})).filter(g=>g.subs.length)}
 
 /* miniatura: recorte da peça na prancha */
-function thumbStyle(s){
-  const pg=bestPage(s),e=SHAPES[s.id]&&SHAPES[s.id][pg],W=1095,H=774,T=58;
+function thumbStyle(s,T=58){
+  const pg=bestPage(s),e=SHAPES[s.id]&&SHAPES[s.id][pg],W=1095,H=774;
   if(!e||!e.g.length)return`background-image:url('${PAGES[pg]}');background-size:contain;background-position:center`;
   let x0=1e9,y0=1e9,x1=0,y1=0;for(const g of e.g){x0=Math.min(x0,g.b[0]);y0=Math.min(y0,g.b[1]);x1=Math.max(x1,g.b[2]);y1=Math.max(y1,g.b[3])}
   const k=Math.min(T/((x1-x0)*1.25),T/((y1-y0)*1.25),.5),cx=(x0+x1)/2*k,cy=(y0+y1)/2*k;
@@ -838,17 +931,17 @@ function renderView(){
   if(S.view==="lista")renderLista(groups);else if(S.view==="kanban")renderKanban(groups);else renderPlanilha(groups);
   layoutShell();
 }
-function renderAll(){renderProj();renderFicha();renderChips();renderView();if(sel)renderDetail()}
+function renderAll(){renderProj();renderFicha();renderChips();renderView();if(S.mode!=="completo")renderSimple();if(sel)renderDetail()}
 function findSub(id){for(const i of proj().items)for(const s of i.subs)if(s.id===id)return{i,s};return{}}
 
 function setStage(s,st){S.stage[key(s)]=st;if(st==="ag")delete S.stage[key(s)];save();toast(`${s.id} → ${stageName(st)}`);refresh()}
 function setAttn(s,on){if(on)S.attn[key(s)]=1;else delete S.attn[key(s)];save();refresh()}
-function refresh(){renderFicha();renderView();if(sel)renderDetail(true);renderTabsCount()}
+function refresh(){renderFicha();renderView();if(S.mode!=="completo")renderSimple();if(sel)renderDetail(true)}
 function renderTabsCount(){}
 
 /* ===================== detalhe ===================== */
 let sel=null,tab="desenho";
-const isDesk=()=>matchMedia("(min-width:1100px)").matches;
+const isDesk=()=>S.mode==="completo"&&matchMedia("(min-width:1100px)").matches;
 function layoutShell(){const sh=$("shell");sh.classList.toggle("split",!!sel);sh.classList.toggle("compact",!!sel&&S.view!=="lista");sh.classList.toggle("nodraw",!!sel&&!S.draw&&isDesk());if(cur)requestAnimationFrame(()=>fitIfNeeded())}
 function openSub(id,pg){
   const {i,s}=findSub(id);if(!s)return;
@@ -860,12 +953,12 @@ function openSub(id,pg){
   renderDetail();renderView();
   showPage(sel.pg,true);
 }
-function closeDetail(silent){sel=null;$("detail").classList.remove("open");$("detail").setAttribute("aria-hidden","true");document.body.style.overflow="";if(!silent){renderView()}layoutShell()}
+function closeDetail(silent){sel=null;try{speechSynthesis.cancel()}catch(e){}if(S.mode!=="completo"&&!silent)renderSimple();$("detail").classList.remove("open");$("detail").setAttribute("aria-hidden","true");document.body.style.overflow="";if(!silent){renderView()}layoutShell()}
 function renderDetail(keepScroll){
   const {i,s}=findSub(sel.s);if(!s)return;
   const st=stageOf(s),di=dueInfo(s);
   $("dSub").textContent=`${s.id} · ${s.q}${s.u?" "+s.u:""}`;$("dTitle").textContent=s.t;
-  $("dPill").innerHTML=`<span class="pill s-${st}">${stageName(st)}</span>`;
+  $("dPill").innerHTML=S.mode!=="completo"?`<span class="pill s-${st}">${SG[groupOf(s)].n}</span>`:`<span class="pill s-${st}">${stageName(st)}</span>`;
   $("dTabs").querySelectorAll("button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.t===tab));
   const desk=isDesk();
   $("tDesenho").hidden=!desk&&tab!=="desenho";
@@ -899,6 +992,7 @@ function renderDetail(keepScroll){
   $("attnSw").onclick=()=>setAttn(s,!isAttn(s));
   $("toMat").onclick=()=>{tab="materiais";renderDetail();$("dScroll").scrollTop=0};
   renderMateriais(s);
+  if(S.mode!=="completo")renderSimpleTask();
   /* vistas */
   const views=s.pr;
   $("vchips").innerHTML=views.map(r=>`<button type="button" class="vchip" data-pg="${r}" aria-pressed="${r===cur}">${pageLabel(r)} · ${esc(PAGE_NAMES[r])}</button>`).join("")+(cur&&!views.includes(cur)?`<button type="button" class="vchip" aria-pressed="true">${pageLabel(cur)} · ${esc(PAGE_NAMES[cur])}</button>`:"");
@@ -1006,6 +1100,7 @@ function openPanel(kind){
   if(kind==="menu"){
     h+=`<h2 id="panelTitle">Menu</h2>
       <button type="button" class="mlink" data-act="tour">Como usar <span>›</span></button>
+      <button type="button" class="mlink" data-act="mode">${S.mode==="completo"?"Voltar ao modo simples":"Abrir modo completo (coordenação)"} <span>›</span></button>
       <h3>Tamanho do texto</h3><div class="fsrow"><button type="button" class="btn" data-fs="-1" aria-label="Diminuir texto">A−</button><span>${Math.round(S.fs*100)}%</span><button type="button" class="btn" data-fs="1" aria-label="Aumentar texto">A+</button></div>
       <h3>Dia D da simulação</h3><div class="dd"><input type="date" id="dIn" value="${S.d||isoDate(dDate())}"><button type="button" class="btn" id="dReset">Padrão</button></div><p class="small">Os prazos D-n são calculados a partir desta data. A OS registra o evento em 03/11/2025.</p>
       <h3>Documentos</h3>
@@ -1026,6 +1121,7 @@ function openPanel(kind){
   p.innerHTML=h;p.classList.add("on");$("scrim").classList.add("on");
   p.querySelectorAll("[data-close]").forEach(b=>b.onclick=closePanel);
   p.querySelectorAll("[data-act=tour]").forEach(b=>b.onclick=()=>{closePanel();startTour()});
+  p.querySelectorAll("[data-act=mode]").forEach(b=>b.onclick=()=>{closePanel();setMode(S.mode==="completo"?"simples":"completo")});
   p.querySelectorAll("[data-fs]").forEach(b=>b.onclick=()=>{S.fs=Math.min(1.4,Math.max(.85,Math.round((S.fs+ +b.dataset.fs*.1)*100)/100));save();applyFs();openPanel("menu")});
   const dIn=p.querySelector("#dIn");if(dIn){dIn.onchange=()=>{S.d=dIn.value;save();refresh()};p.querySelector("#dReset").onclick=()=>{S.d="";save();refresh();openPanel("menu")}}
   const w=p.querySelector("#wipe");if(w)w.onclick=()=>{if(w.dataset.ok){try{localStorage.removeItem(KEY)}catch(e){}location.reload();return}w.dataset.ok=1;w.textContent="Toque de novo para apagar tudo deste aparelho";w.style.borderColor="var(--yellow)"};
@@ -1050,17 +1146,25 @@ const TOUR=[
   {t:"#vchips",open:true,h:"Vistas",p:"Troque entre as pranchas onde a peça aparece (3D, planta, luminotécnico, detalhes). “Outras pranchas” lista todas do projeto."},
   {t:"#stageCtl",open:true,tab:"detalhes",h:"Etapa, atenção e validação",p:"Escolha a etapa da tarefa. “Atenção” é um aviso separado. Faixas amarelas indicam o que precisa ser validado antes de produzir."},
   {t:"#toMat",open:true,tab:"detalhes",h:"Materiais e fornecedores",p:"Contatos com Ligar e WhatsApp e alternativas de material, sempre marcadas para validação técnica. O tour fica sempre em “Como usar”, no menu."}];
+const TOUR_S=[
+  {t:".s-projs",h:"Escolha o projeto",p:"Toque na foto do projeto em que você vai trabalhar."},
+  {t:"#sTabs",h:"Veja suas tarefas",p:"Para fazer, Fazendo e Pronto. O número mostra quantas tarefas tem em cada um."},
+  {t:"#sList .s-card",h:"Toque na tarefa",p:"A foto mostra a peça. O número grande é a quantidade. Embaixo: quem faz e quando."},
+  {t:"#canvas",open:true,h:"A peça no desenho",p:"A peça aparece maior e com luz laranja. Use + e − para chegar perto."},
+  {t:"#tSimple .sx-go",open:true,h:"Botão grande",p:"Toque em Começar quando iniciar. Toque em Terminei quando acabar."},
+  {t:"#sxSay",open:true,h:"Ouvir e avisar",p:"Ouvir a tarefa lê tudo em voz alta. Se algo estiver errado, toque em Tem um problema."}];
+const tourList=()=>S.mode==="completo"?TOUR:TOUR_S;
 let tIx=-1,tRaf=0;
 function startTour(){$("ask").hidden=true;S.tourAsked=true;save();tIx=0;$("tour").hidden=false;stepTour()}
 function endTour(){tIx=-1;$("tour").hidden=true;cancelAnimationFrame(tRaf)}
 function tourTarget(st){return[...document.querySelectorAll(st.t)].find(el=>el.offsetParent!==null||el.getClientRects().length)}
 function stepTour(){
-  const st=TOUR[tIx];if(!st){endTour();return}
-  if(st.open){if(!sel){const f=allSubs(proj()).find(x=>SHAPES[x.s.id]);openSub(f.s.id)}if(st.tab&&!isDesk()&&tab!==st.tab){tab=st.tab;renderDetail()}else if(!st.tab&&!isDesk()&&tab!=="desenho"){tab="desenho";renderDetail()}}
+  const TL=tourList(),st=TL[tIx];if(!st){endTour();return}
+  if(st.open){if(!sel){const f=allSubs(proj()).find(x=>SHAPES[x.s.id]&&groupOf(x.s)!=="pronto")||allSubs(proj()).find(x=>SHAPES[x.s.id]);openSub(f.s.id)}if(st.tab&&!isDesk()&&tab!==st.tab){tab=st.tab;renderDetail()}else if(!st.tab&&!isDesk()&&tab!=="desenho"){tab="desenho";renderDetail()}}
   else if(sel&&!isDesk())closeDetail();
   requestAnimationFrame(()=>{
     const el=tourTarget(st);if(el)el.scrollIntoView({block:"center",behavior:"instant"});
-    $("tip").innerHTML=`<small>${tIx+1} DE ${TOUR.length}</small><h3>${st.h}</h3><p>${st.p}</p><div class="tb"><button type="button" id="tSkip">Sair</button>${tIx?'<button type="button" id="tPrev">Voltar</button>':""}<button type="button" class="go" id="tNext">${tIx===TOUR.length-1?"Concluir":"Próximo"}</button></div>`;
+    $("tip").innerHTML=`<small>${tIx+1} DE ${TL.length}</small><h3>${st.h}</h3><p>${st.p}</p><div class="tb"><button type="button" id="tSkip">Sair</button>${tIx?'<button type="button" id="tPrev">Voltar</button>':""}<button type="button" class="go" id="tNext">${tIx===TL.length-1?"Concluir":"Próximo"}</button></div>`;
     $("tSkip").onclick=endTour;$("tNext").onclick=()=>{tIx++;stepTour()};const pv=$("tPrev");if(pv)pv.onclick=()=>{tIx--;stepTour()};$("tNext").focus({preventScroll:true});
     cancelAnimationFrame(tRaf);const loop=()=>{placeTour(st);tRaf=requestAnimationFrame(loop)};loop();
   });
@@ -1085,11 +1189,100 @@ $("viewSeg").querySelectorAll("button").forEach(b=>b.onclick=()=>{S.view=b.datas
 $("simX").onclick=()=>{S.simHidden=true;save();$("sim").hidden=true};
 let wasDesk=isDesk();addEventListener("resize",()=>{const d=isDesk();if(d!==wasDesk){wasDesk=d;document.body.style.overflow=sel&&!d?"hidden":"";if(sel)renderDetail(true)}layoutShell()});
 
+/* ===================== MODO SIMPLES ===================== */
+const IC={
+ fazer:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10M7 21h10M8 3c0 5 8 5 8 9s-8 4-8 9M16 3c0 5-8 5-8 9"/></svg>',
+ fazendo:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 6 4 4M3 21l8.5-8.5"/><path d="M13 3l8 8-3 3-8-8z"/></svg>',
+ pronto:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="m7.5 12.5 3 3 6-6.5"/></svg>',
+ alerta:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/></svg>',
+ pessoa:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>',
+ relogio:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+ som:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 8a5 5 0 0 1 0 8M19.5 5.5a8.5 8.5 0 0 1 0 13"/></svg>',
+ tel:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg>',
+ lupa:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
+ voltar:'<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg>'};
+const SG={fazer:{n:"Para fazer",st:["ag","li"]},fazendo:{n:"Fazendo",st:["pr","ex"]},pronto:{n:"Pronto",st:["en"]}};
+const groupOf=s=>{const st=stageOf(s);return st==="en"?"pronto":(st==="pr"||st==="ex")?"fazendo":"fazer"};
+function daysLeft(s){const t=new Date();t.setHours(12,0,0,0);return Math.round((dueOf(s)-t)/864e5)}
+function whenWords(s){if(groupOf(s)==="pronto")return{t:"Pronto",late:false};const n=daysLeft(s);
+  if(n<0)return{t:n===-1?"Atrasado 1 dia":`Atrasado ${-n} dias`,late:true};if(n===0)return{t:"É para hoje",late:true};if(n===1)return{t:"Para amanhã",late:true};return{t:`Faltam ${n} dias`,late:n<=3}}
+const qtyBig=s=>{const m=/^[≈~]?\s*([\d.,]+)\*?$/.exec(String(s.q).trim());return m?{n:m[1],u:s.u||"un."}:{n:null,u:""}};
+const shortWho=s=>{const o=owner(s);return o.charAt(0).toUpperCase()+o.slice(1)};
+const projPic=p=>PAGES[p.id==="estande"?"stand-02":"fest-02"];
+let sTab="fazer";
+function renderSimple(){
+  const p=proj(),subs=allSubs(p),n=subs.length,done=subs.filter(x=>groupOf(x.s)==="pronto").length;
+  const cnt=k=>subs.filter(x=>groupOf(x.s)===k).length;
+  const q=(S.sq||"").trim().toLocaleLowerCase("pt-BR");
+  let list=subs.filter(x=>groupOf(x.s)===sTab&&(!q||[x.s.id,x.s.t,x.s.desc,x.s.quem,x.i.t].join(" ").toLocaleLowerCase("pt-BR").includes(q)));
+  if(sTab!=="pronto")list.sort((a,b)=>daysLeft(a.s)-daysLeft(b.s));
+  $("simple").innerHTML=`<div class="s-wrap">
+    <div class="s-projs" role="group" aria-label="Escolha o projeto">${PROJECTS.map(pp=>`<button type="button" class="s-proj" data-p="${pp.id}" aria-pressed="${pp.id===S.proj}"><span class="pic" style="background-image:url('${projPic(pp)}')" aria-hidden="true"></span><b>${esc(pp.name)}</b></button>`).join("")}</div>
+    <div class="s-big" id="sProg"><div class="num"><b>${done}</b><span>de ${n} prontas</span></div><div class="bar"><i style="width:${done/n*100}%"></i></div></div>
+    <div class="s-tabs" role="group" aria-label="O que mostrar" id="sTabs">
+      ${Object.entries(SG).map(([k,v])=>`<button type="button" class="s-tab t-${k}" data-k="${k}" aria-pressed="${sTab===k}">${IC[k]}<span>${cnt(k)}</span>${v.n}</button>`).join("")}</div>
+    <label class="s-search">${IC.lupa}<span class="sr">Procurar</span><input id="sq" type="search" placeholder="Procurar peça" value="${esc(S.sq||"")}" autocomplete="off"></label>
+    <div class="s-list" id="sList">${list.length?list.map(({s})=>sCard(s)).join(""):`<div class="s-empty">${IC.pronto}${sTab==="pronto"?"Nada pronto ainda.":sTab==="fazendo"?"Ninguém está fazendo nada agora.":"Tudo feito!"}</div>`}</div>
+    <button type="button" class="s-mode" id="toComplex">Abrir modo completo (coordenação)</button>
+  </div>`;
+  $("simple").querySelectorAll(".s-proj").forEach(b=>b.onclick=()=>{if(S.proj===b.dataset.p)return;S.proj=b.dataset.p;save();closeDetail(true);renderAll()});
+  $("sTabs").querySelectorAll(".s-tab").forEach(b=>b.onclick=()=>{sTab=b.dataset.k;renderSimple()});
+  const si=$("sq");si.oninput=()=>{S.sq=si.value;const pos=si.selectionStart;renderSimple();const n2=$("sq");n2.focus();n2.setSelectionRange(pos,pos)};
+  $("simple").querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>openSub(b.dataset.s));
+  $("toComplex").onclick=()=>setMode("completo");
+}
+function sCard(s){const g=groupOf(s),w=whenWords(s),qb=qtyBig(s);
+  return`<button type="button" class="s-card ${isAttn(s)?"problem":""}" data-s="${s.id}">
+    <span class="thumb" style="${thumbStyle(s,96)}" aria-hidden="true"></span>
+    <span style="min-width:0"><span class="nm">${esc(s.t)}</span>
+      <span class="who">${IC.pessoa}${esc(shortWho(s))}</span>
+      <span class="when ${w.late?"late":""}">${IC.relogio}${esc(w.t)}</span>
+      ${isAttn(s)?`<span class="s-state" style="color:var(--yellow)">${IC.alerta}Problema</span>`:`<span class="s-state st-${g}">${IC[g]}${SG[g].n}</span>`}</span>
+    ${qb.n?`<span class="s-qty"><b>${esc(qb.n)}</b><small>${esc(qb.u)}</small></span>`:""}</button>`}
+function renderSimpleTask(){
+  const {i,s}=findSub(sel.s);if(!s)return;
+  const g=groupOf(s),w=whenWords(s),qb=qtyBig(s),box=BOXTRUSS_ITEMS.includes(s.id)&&S.proj==="estande";
+  const warn=s.bloq?{t:"Espere antes de fazer",v:`Esta tarefa precisa que a tarefa ${s.bloq} fique pronta antes.`}
+    :(s.div||i.div||i.extra)?{t:"Confirme antes de fazer",v:"Tem uma informação a confirmar com o responsável. Fale com a coordenação antes de começar."}:null;
+  $("tSimple").innerHTML=`<div class="sx">
+    ${warn?`<div class="sx-warn">${IC.alerta}<div><b>${warn.t}</b>${warn.v}</div></div>`:""}
+    ${g==="fazer"?`<button type="button" class="sx-go start" data-to="pr">${IC.fazendo}Começar</button>`:""}
+    ${g==="fazendo"?`<button type="button" class="sx-go done" data-to="en">${IC.pronto}Terminei</button>`:""}
+    ${g==="pronto"?`<div class="sx-go ok" role="status">${IC.pronto}Pronto</div>`:""}
+    <div class="sx-row">
+      <div class="sx-box"><span>Quantas</span><b>${qb.n?esc(qb.n)+" "+esc(qb.u):esc(s.q)+" "+esc(s.u)}</b></div>
+      <div class="sx-box ${w.late?"late":""}"><span>${IC.relogio}Quando</span><b class="small">${esc(w.t)}</b></div>
+    </div>
+    <div class="sx-box"><span>${IC.pessoa}Quem faz</span><b class="small">${esc(shortWho(s))}</b></div>
+    <p class="sx-what">${esc(s.desc)}</p>
+    <button type="button" class="sx-sec" id="sxSay" ${"speechSynthesis" in window?"":"hidden"}>${IC.som}Ouvir a tarefa</button>
+    <button type="button" class="sx-sec prob" id="sxProb" aria-pressed="${isAttn(s)}">${IC.alerta}${isAttn(s)?"Tirar aviso de problema":"Tem um problema"}</button>
+    ${isAttn(s)?`<p class="small" style="margin:-6px 0 0;text-align:center">Aviso salvo neste aparelho. Avise também a coordenação pessoalmente.</p>`:""}
+    ${box?`<details class="more sx-more"><summary>${IC.tel} Ligar para fornecedor</summary><div class="in" style="display:flex;flex-direction:column;gap:10px">${BOXTRUSS.map(c=>`<div class="sx-sup"><b>${esc(c.nome)} · ${esc(c.empresa)}</b><span class="tel">${esc(c.fmt)}</span><div class="supact"><a href="tel:+55${c.tel}">Ligar</a><a class="wa" href="https://wa.me/55${c.tel}" target="_blank" rel="noopener">WhatsApp</a></div></div>`).join("")}</div></details>`:""}
+    <details class="more sx-more"><summary>Ver mais detalhes</summary><div class="in">
+      <div class="info"><span>Antes de começar</span><p>${esc(s.prev)}</p></div>
+      <div class="info"><span>Como fica pronto</span><p>${esc(s.ent)}</p></div>
+      ${s.div?`<div class="info"><span>O que confirmar</span><p>${esc(s.div)}</p></div>`:""}
+      ${i.div?i.div.map(d=>`<div class="info"><span>${esc(d.t)}</span><p>${esc(d.v)}</p></div>`).join(""):""}
+      <div class="info"><span>Responsável</span><p>${esc(s.quem)}</p></div>
+      <div class="info" style="border:0"><span>Prazo (simulação)</span><p>${esc(s.jan)} · D-${s.d}</p></div>
+    </div></details>
+    ${g!=="fazer"?`<button type="button" class="sx-sec" data-to="${g==="pronto"?"pr":"ag"}">${IC.voltar}${g==="pronto"?"Ainda não está pronto":"Ainda não comecei"}</button>`:""}
+  </div>`;
+  $("tSimple").querySelectorAll("[data-to]").forEach(b=>b.onclick=()=>{setStage(s,b.dataset.to);if(b.dataset.to==="en")toast("Muito bem! Tarefa pronta.")});
+  $("sxProb").onclick=()=>setAttn(s,!isAttn(s));
+  const say=$("sxSay");if(say)say.onclick=()=>speak(s);
+}
+function speak(s){try{speechSynthesis.cancel();const w=whenWords(s),qb=qtyBig(s);
+  const u=new SpeechSynthesisUtterance(`${s.t}. Quantidade: ${qb.n?qb.n+" "+(qb.u==="un."?"unidades":qb.u):s.q+" "+s.u}. Quem faz: ${owner(s)}. ${w.t}. O que fazer: ${s.desc} Antes de começar: ${s.prev}`.replace(/ x /g," por "));
+  u.lang="pt-BR";u.rate=.92;const v=speechSynthesis.getVoices().find(v=>/pt[-_]BR/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){toast("Este aparelho não consegue ler em voz alta")}}
+function setMode(m){S.mode=m;save();document.documentElement.classList.toggle("simple-mode",m!=="completo");closeDetail(true);renderAll();scrollTo({top:0});toast(m==="completo"?"Modo completo":"Modo simples")}
+
 /* ===================== início ===================== */
 /* versão de arquivo único: imagens e PDFs embutidos viram blob URLs (evita repetir base64 no DOM) */
 function toBlobUrl(u){if(!/^data:/.test(u))return u;const [h,b]=u.split(",");const bin=atob(b),a=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)a[i]=bin.charCodeAt(i);return URL.createObjectURL(new Blob([a],{type:h.slice(5).split(";")[0]}))}
 for(const k in PAGES)PAGES[k]=toBlobUrl(PAGES[k]);for(const k in DOCS)if(DOCS[k])DOCS[k]=toBlobUrl(DOCS[k]);
-applyFs();if(S.simHidden)$("sim").hidden=true;
+applyFs();document.documentElement.classList.toggle("simple-mode",S.mode!=="completo");if(S.simHidden)$("sim").hidden=true;
 renderAll();
 if(!S.tourAsked)setTimeout(()=>{$("ask").hidden=false},500);
 </script>
