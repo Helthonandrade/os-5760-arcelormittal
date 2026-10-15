@@ -366,12 +366,46 @@ details.more .in{padding:0 12px 12px}
 .s-empty{padding:28px 16px;border:2px dashed var(--line2);border-radius:18px;text-align:center;font-size:1.05rem;color:var(--ink2)}
 .s-empty .ico{width:48px;height:48px;color:var(--green);display:block;margin:0 auto 8px}
 .s-mode{align-self:center;min-height:48px;padding:0 18px;border:1px solid var(--line2);border-radius:999px;background:transparent;color:var(--muted);font-size:.9rem}
+.simple-mode{font-size:calc(16.5px * var(--fs))}
+.s-card{grid-template-columns:96px minmax(0,1fr) auto;gap:10px;border-width:3px;border-left-width:10px}
+.s-card.g-fazer{border-left-color:#5b6266}.s-card.g-fazendo{border-left-color:var(--amber)}.s-card.g-pronto{border-left-color:var(--green)}
+.s-card.problem{border-color:var(--yellow)}
+.s-card .thumb{width:96px;height:96px}
+.s-card .nm{font-size:1rem;overflow-wrap:anywhere;hyphens:auto}
+.s-mid{min-width:0;display:flex;flex-direction:column;gap:8px}
+.s-flag{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;padding:4px 10px;border-radius:999px;font-weight:800;font-size:.8rem;white-space:nowrap}
+.s-flag .ico{width:1.2em;height:1.2em}
+.s-flag.y{background:var(--yellow);color:var(--yellow-ink)}
+.s-card .s-qty{min-width:58px;padding:8px 6px}
+.s-card .s-qty b{font-size:1.6rem}
+.s-card .s-qty small{font-size:.7rem}
+.s-card .s-qty .ico{width:34px;height:34px;color:var(--muted)}
+.s-find{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border:2px dashed var(--line2);border-radius:16px;background:transparent;color:var(--ink2);font-weight:800;font-size:1rem}
+.s-x{border:0;background:none;color:var(--ink2);font-size:1.3rem;min-width:44px;min-height:44px}
+.simple-mode #dSub,.simple-mode #dPill{display:none}
+.simple-mode .dh .dtitle b{font-size:1.15rem;white-space:normal}
+.sx-head{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.sx-q{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:92px;padding:6px 10px;border-radius:14px;background:var(--bg2)}
+.sx-q b{font-size:2.6rem;line-height:1}
+.sx-q b.txt{font-size:1.2rem;text-align:center}
+.sx-q span{font-size:.9rem;color:var(--muted);font-weight:700}
+.sx-meta{display:flex;flex-direction:column;gap:8px;min-width:0;font-size:1.05rem;font-weight:700;color:var(--ink2)}
+.sx-meta span{display:flex;align-items:center;gap:8px}
+.sx-meta .late{color:var(--yellow)}
+.sx-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sx-two .sx-sec{min-height:68px;flex-direction:column;gap:4px}
+.sx-note{margin:-4px 0 0;text-align:center;font-size:.9rem;color:var(--muted)}
+.sx-undo{align-self:center;display:flex;align-items:center;gap:8px;min-height:48px;padding:0 16px;border:0;background:none;color:var(--muted);font-weight:700;font-size:.95rem}
+.simple-mode .ctrl{grid-template-columns:48px 48px 1fr 1fr}
+.simple-mode .ctrl button{font-size:.85rem;min-height:50px}
 /* tela da tarefa no modo simples */
 .simple-mode .dtabs,.simple-mode #tDetalhes,.simple-mode #tMateriais,.simple-mode #pgMore,.simple-mode #zHide{display:none!important}
 #tSimple{display:none}
 .simple-mode #tSimple{display:block}
 .simple-mode #tDesenho{display:block!important}
-.simple-mode .canvas{height:clamp(220px,42vh,460px)}
+.simple-mode .canvas{height:clamp(220px,40vh,440px)}
+.simple-mode .vchips,.simple-mode .drawbar{display:none}
+.simple-mode .cap{display:none}
 .simple-mode .ctrl{grid-template-columns:52px 52px 1fr 1fr}
 .simple-mode .ctrl button{min-height:52px;font-size:.95rem}
 .sx{display:flex;flex-direction:column;gap:14px;padding-bottom:10px}
@@ -750,8 +784,8 @@ function showPage(pg,fromSel){
   $("pgName").textContent=`${pageLabel(pg)} · ${PAGE_NAMES[pg]}`;
   $("cap").textContent=`${proj().name} · ${pageLabel(pg)} · PDF p. ${pdfPage(pg)}`;
   $("vchips").querySelectorAll(".vchip[data-pg]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.pg===pg));
-  if(changed){img.onload=()=>{IW=img.naturalWidth;IH=img.naturalHeight;svg.setAttribute("viewBox",`0 0 ${IW} ${IH}`);stage.style.width=IW+"px";stage.style.height=IH+"px";fitView();drawHL()};img.src=PAGES[pg];img.alt=`Prancha ${pageLabel(pg)} · ${PAGE_NAMES[pg]}`}
-  else{drawHL();fitView()}
+  if(changed){img.onload=()=>{IW=img.naturalWidth;IH=img.naturalHeight;svg.setAttribute("viewBox",`0 0 ${IW} ${IH}`);stage.style.width=IW+"px";stage.style.height=IH+"px";fitView();drawHL();autoFocus()};img.src=PAGES[pg];img.alt=`Prancha ${pageLabel(pg)} · ${PAGE_NAMES[pg]}`}
+  else{drawHL();fitView();autoFocus()}
   if(sel)renderDetailViews();
 }
 function renderDetailViews(){const {s}=findSub(sel.s);if(!s)return;
@@ -765,6 +799,7 @@ function clamp(){const r=rect(),w=IW*view.s,h=IH*view.s;view.x=w<=r.width?(r.wid
 function zoomAt(f,cx,cy){const ns=Math.min(fit*8,Math.max(fit,view.s*f)),k=ns/view.s;view.x=cx-(cx-view.x)*k;view.y=cy-(cy-view.y)*k;view.s=ns;clamp();apply()}
 function shapes(){if(!sel)return null;return SHAPES[sel.s]&&SHAPES[sel.s][cur]||null}
 function pieceBox(){const e=shapes();if(!e||!e.g.length)return null;let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;for(const g of e.g){x0=Math.min(x0,g.b[0]);y0=Math.min(y0,g.b[1]);x1=Math.max(x1,g.b[2]);y1=Math.max(y1,g.b[3])}return[x0,y0,x1,y1]}
+function autoFocus(){if(S.mode!=="completo"&&sel)requestAnimationFrame(()=>{const b=pieceBox();if(b)focusPiece()})}
 function focusPiece(){const b=pieceBox();if(!b){fitView();toast("Sem contorno nesta prancha");return}const r=rect(),pad=.2,w=(b[2]-b[0])*(1+pad*2),h=(b[3]-b[1])*(1+pad*2);
   view.s=Math.min(fit*6,Math.max(fit,Math.min(r.width/w,r.height/h)));view.x=r.width/2-(b[0]+b[2])/2*view.s;view.y=r.height/2-(b[1]+b[3])/2*view.s;clamp();apply()}
 const NS="http://www.w3.org/2000/svg";let hlSeq=0;
@@ -864,10 +899,10 @@ const TOUR=[
 const TOUR_S=[
   {t:".s-projs",h:"Escolha o projeto",p:"Toque na foto do projeto em que você vai trabalhar."},
   {t:"#sTabs",h:"Veja suas tarefas",p:"Para fazer, Fazendo e Pronto. O número mostra quantas tarefas tem em cada um."},
-  {t:"#sList .s-card",h:"Toque na tarefa",p:"A foto mostra a peça. O número grande é a quantidade. Embaixo: quem faz e quando."},
-  {t:"#canvas",open:true,h:"A peça no desenho",p:"A peça aparece maior e com luz laranja. Use + e − para chegar perto."},
-  {t:"#tSimple .sx-go",open:true,h:"Botão grande",p:"Toque em Começar quando iniciar. Toque em Terminei quando acabar."},
-  {t:"#sxSay",open:true,h:"Ouvir e avisar",p:"Ouvir a tarefa lê tudo em voz alta. Se algo estiver errado, toque em Tem um problema."}];
+  {t:"#sList .s-card",h:"Toque na tarefa",p:"A foto mostra a peça. O número grande é quantas peças fazer."},
+  {t:"#canvas",open:true,h:"A peça no desenho",p:"A peça aparece de perto, com luz laranja. Toque em “Ver tudo” para ver onde ela fica."},
+  {t:"#tSimple .sx-go",open:true,h:"Um botão só",p:"Começar quando iniciar. Terminei quando acabar."},
+  {t:".sx-two",open:true,h:"Ouvir e avisar",p:"Ouvir: o celular fala a tarefa. Problema: avisa que algo está errado."}];
 const tourList=()=>S.mode==="completo"?TOUR:TOUR_S;
 let tIx=-1,tRaf=0;
 function startTour(){$("ask").hidden=true;S.tourAsked=true;save();tIx=0;$("tour").hidden=false;stepTour()}
@@ -924,7 +959,7 @@ function whenWords(s){if(groupOf(s)==="pronto")return{t:"Pronto",late:false};con
 const qtyBig=s=>{const m=/^[≈~]?\s*([\d.,]+)\*?$/.exec(String(s.q).trim());return m?{n:m[1],u:s.u||"un."}:{n:null,u:""}};
 const shortWho=s=>{const o=owner(s);return o.charAt(0).toUpperCase()+o.slice(1)};
 const projPic=p=>PAGES[p.id==="estande"?"stand-02":"fest-02"];
-let sTab="fazer";
+let sTab="fazer",sFind=false;
 function renderSimple(){
   const p=proj(),subs=allSubs(p),n=subs.length,done=subs.filter(x=>groupOf(x.s)==="pronto").length;
   const cnt=k=>subs.filter(x=>groupOf(x.s)===k).length;
@@ -933,48 +968,45 @@ function renderSimple(){
   if(sTab!=="pronto")list.sort((a,b)=>daysLeft(a.s)-daysLeft(b.s));
   $("simple").innerHTML=`<div class="s-wrap">
     <div class="s-projs" role="group" aria-label="Escolha o projeto">${PROJECTS.map(pp=>`<button type="button" class="s-proj" data-p="${pp.id}" aria-pressed="${pp.id===S.proj}"><span class="pic" style="background-image:url('${projPic(pp)}')" aria-hidden="true"></span><b>${esc(pp.name)}</b></button>`).join("")}</div>
-    <div class="s-big" id="sProg"><div class="num"><b>${done}</b><span>de ${n} prontas</span></div><div class="bar"><i style="width:${done/n*100}%"></i></div></div>
     <div class="s-tabs" role="group" aria-label="O que mostrar" id="sTabs">
       ${Object.entries(SG).map(([k,v])=>`<button type="button" class="s-tab t-${k}" data-k="${k}" aria-pressed="${sTab===k}">${IC[k]}<span>${cnt(k)}</span>${v.n}</button>`).join("")}</div>
-    <label class="s-search">${IC.lupa}<span class="sr">Procurar</span><input id="sq" type="search" placeholder="Procurar peça" value="${esc(S.sq||"")}" autocomplete="off"></label>
+    ${S.sq||sFind?`<label class="s-search">${IC.lupa}<span class="sr">Procurar</span><input id="sq" type="search" placeholder="Nome da peça" value="${esc(S.sq||"")}" autocomplete="off"><button type="button" class="s-x" id="sqx" aria-label="Fechar busca">✕</button></label>`:""}
     <div class="s-list" id="sList">${list.length?list.map(({s})=>sCard(s)).join(""):`<div class="s-empty">${IC.pronto}${sTab==="pronto"?"Nada pronto ainda.":sTab==="fazendo"?"Ninguém está fazendo nada agora.":"Tudo feito!"}</div>`}</div>
-    <button type="button" class="s-mode" id="toComplex">Abrir modo completo (coordenação)</button>
+    ${S.sq||sFind?"":`<button type="button" class="s-find" id="sFind">${IC.lupa}Procurar peça</button>`}
   </div>`;
   $("simple").querySelectorAll(".s-proj").forEach(b=>b.onclick=()=>{if(S.proj===b.dataset.p)return;S.proj=b.dataset.p;save();closeDetail(true);renderAll()});
   $("sTabs").querySelectorAll(".s-tab").forEach(b=>b.onclick=()=>{sTab=b.dataset.k;renderSimple()});
-  const si=$("sq");si.oninput=()=>{S.sq=si.value;const pos=si.selectionStart;renderSimple();const n2=$("sq");n2.focus();n2.setSelectionRange(pos,pos)};
+  const si=$("sq");if(si){si.oninput=()=>{S.sq=si.value;const pos=si.selectionStart;renderSimple();const n2=$("sq");n2.focus();n2.setSelectionRange(pos,pos)};
+    $("sqx").onclick=()=>{S.sq="";sFind=false;save();renderSimple()};if(sFind&&!S.sq)si.focus()}
+  const sf=$("sFind");if(sf)sf.onclick=()=>{sFind=true;renderSimple();window.scrollTo({top:$("sq").getBoundingClientRect().top+scrollY-90,behavior:"smooth"})};
   $("simple").querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>openSub(b.dataset.s));
-  $("toComplex").onclick=()=>setMode("completo");
 }
 function sCard(s){const g=groupOf(s),w=whenWords(s),qb=qtyBig(s);
-  return`<button type="button" class="s-card ${isAttn(s)?"problem":""}" data-s="${s.id}">
+  const flag=isAttn(s)?`<span class="s-flag y">${IC.alerta}Problema</span>`:(g!=="pronto"&&w.late)?`<span class="s-flag y">${IC.relogio}${esc(w.t)}</span>`:"";
+  return`<button type="button" class="s-card g-${g} ${isAttn(s)?"problem":""}" data-s="${s.id}">
     <span class="thumb" style="${thumbStyle(s,96)}" aria-hidden="true"></span>
-    <span style="min-width:0"><span class="nm">${esc(s.t)}</span>
-      <span class="who">${IC.pessoa}${esc(shortWho(s))}</span>
-      <span class="when ${w.late?"late":""}">${IC.relogio}${esc(w.t)}</span>
-      ${isAttn(s)?`<span class="s-state" style="color:var(--yellow)">${IC.alerta}Problema</span>`:`<span class="s-state st-${g}">${IC[g]}${SG[g].n}</span>`}</span>
-    ${qb.n?`<span class="s-qty"><b>${esc(qb.n)}</b><small>${esc(qb.u)}</small></span>`:""}</button>`}
+    <span class="s-mid"><span class="nm">${esc(s.t)}</span>${flag}</span>
+    <span class="s-qty">${qb.n?`<b>${esc(qb.n)}</b><small>${esc(qb.u)}</small>`:IC[g]}</span></button>`}
 function renderSimpleTask(){
   const {i,s}=findSub(sel.s);if(!s)return;
   const g=groupOf(s),w=whenWords(s),qb=qtyBig(s),box=BOXTRUSS_ITEMS.includes(s.id)&&S.proj==="estande";
   const warn=s.bloq?{t:"Espere antes de fazer",v:`Esta tarefa precisa que a tarefa ${s.bloq} fique pronta antes.`}
     :(s.div||i.div||i.extra)?{t:"Confirme antes de fazer",v:"Tem uma informação a confirmar com o responsável. Fale com a coordenação antes de começar."}:null;
   $("tSimple").innerHTML=`<div class="sx">
+    <div class="sx-head"><div class="sx-q">${qb.n?`<b>${esc(qb.n)}</b><span>${esc(qb.u==="un."?"peças":qb.u)}</span>`:`<b class="txt">${esc(s.q)}</b><span>${esc(s.u)}</span>`}</div>
+      <div class="sx-meta"><span>${IC.pessoa}${esc(shortWho(s))}</span><span class="${w.late?"late":""}">${IC.relogio}${esc(w.t)}</span></div></div>
     ${warn?`<div class="sx-warn">${IC.alerta}<div><b>${warn.t}</b>${warn.v}</div></div>`:""}
     ${g==="fazer"?`<button type="button" class="sx-go start" data-to="pr">${IC.fazendo}Começar</button>`:""}
     ${g==="fazendo"?`<button type="button" class="sx-go done" data-to="en">${IC.pronto}Terminei</button>`:""}
     ${g==="pronto"?`<div class="sx-go ok" role="status">${IC.pronto}Pronto</div>`:""}
-    <div class="sx-row">
-      <div class="sx-box"><span>Quantas</span><b>${qb.n?esc(qb.n)+" "+esc(qb.u):esc(s.q)+" "+esc(s.u)}</b></div>
-      <div class="sx-box ${w.late?"late":""}"><span>${IC.relogio}Quando</span><b class="small">${esc(w.t)}</b></div>
+    <div class="sx-two">
+      <button type="button" class="sx-sec" id="sxSay" ${"speechSynthesis" in window?"":"hidden"}>${IC.som}Ouvir</button>
+      <button type="button" class="sx-sec prob" id="sxProb" aria-pressed="${isAttn(s)}">${IC.alerta}${isAttn(s)?"Tirar aviso":"Problema"}</button>
     </div>
-    <div class="sx-box"><span>${IC.pessoa}Quem faz</span><b class="small">${esc(shortWho(s))}</b></div>
-    <p class="sx-what">${esc(s.desc)}</p>
-    <button type="button" class="sx-sec" id="sxSay" ${"speechSynthesis" in window?"":"hidden"}>${IC.som}Ouvir a tarefa</button>
-    <button type="button" class="sx-sec prob" id="sxProb" aria-pressed="${isAttn(s)}">${IC.alerta}${isAttn(s)?"Tirar aviso de problema":"Tem um problema"}</button>
-    ${isAttn(s)?`<p class="small" style="margin:-6px 0 0;text-align:center">Aviso salvo neste aparelho. Avise também a coordenação pessoalmente.</p>`:""}
+    ${isAttn(s)?`<p class="sx-note">Aviso salvo neste celular. Fale também com a coordenação.</p>`:""}
     ${box?`<details class="more sx-more"><summary>${IC.tel} Ligar para fornecedor</summary><div class="in" style="display:flex;flex-direction:column;gap:10px">${BOXTRUSS.map(c=>`<div class="sx-sup"><b>${esc(c.nome)} · ${esc(c.empresa)}</b><span class="tel">${esc(c.fmt)}</span><div class="supact"><a href="tel:+55${c.tel}">Ligar</a><a class="wa" href="https://wa.me/55${c.tel}" target="_blank" rel="noopener">WhatsApp</a></div></div>`).join("")}</div></details>`:""}
-    <details class="more sx-more"><summary>Ver mais detalhes</summary><div class="in">
+    <details class="more sx-more"><summary>Ler mais</summary><div class="in">
+      <div class="info"><span>O que fazer</span><p>${esc(s.desc)}</p></div>
       <div class="info"><span>Antes de começar</span><p>${esc(s.prev)}</p></div>
       <div class="info"><span>Como fica pronto</span><p>${esc(s.ent)}</p></div>
       ${s.div?`<div class="info"><span>O que confirmar</span><p>${esc(s.div)}</p></div>`:""}
@@ -982,7 +1014,7 @@ function renderSimpleTask(){
       <div class="info"><span>Responsável</span><p>${esc(s.quem)}</p></div>
       <div class="info" style="border:0"><span>Prazo (simulação)</span><p>${esc(s.jan)} · D-${s.d}</p></div>
     </div></details>
-    ${g!=="fazer"?`<button type="button" class="sx-sec" data-to="${g==="pronto"?"pr":"ag"}">${IC.voltar}${g==="pronto"?"Ainda não está pronto":"Ainda não comecei"}</button>`:""}
+    ${g!=="fazer"?`<button type="button" class="sx-undo" data-to="${g==="pronto"?"pr":"ag"}">${IC.voltar}Desfazer</button>`:""}
   </div>`;
   $("tSimple").querySelectorAll("[data-to]").forEach(b=>b.onclick=()=>{setStage(s,b.dataset.to);if(b.dataset.to==="en")toast("Muito bem! Tarefa pronta.")});
   $("sxProb").onclick=()=>setAttn(s,!isAttn(s));
@@ -991,13 +1023,14 @@ function renderSimpleTask(){
 function speak(s){try{speechSynthesis.cancel();const w=whenWords(s),qb=qtyBig(s);
   const u=new SpeechSynthesisUtterance(`${s.t}. Quantidade: ${qb.n?qb.n+" "+(qb.u==="un."?"unidades":qb.u):s.q+" "+s.u}. Quem faz: ${owner(s)}. ${w.t}. O que fazer: ${s.desc} Antes de começar: ${s.prev}`.replace(/ x /g," por "));
   u.lang="pt-BR";u.rate=.92;const v=speechSynthesis.getVoices().find(v=>/pt[-_]BR/i.test(v.lang));if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){toast("Este aparelho não consegue ler em voz alta")}}
-function setMode(m){S.mode=m;save();document.documentElement.classList.toggle("simple-mode",m!=="completo");closeDetail(true);renderAll();scrollTo({top:0});toast(m==="completo"?"Modo completo":"Modo simples")}
+function ctrlLabels(){const simple=S.mode!=="completo";$("zFit").innerHTML=simple?'<span aria-hidden="true">⤢</span> Ver tudo':'<span aria-hidden="true">⤢</span> Ajustar';$("zPiece").innerHTML=simple?'<span aria-hidden="true">◎</span> Ver peça':'<span aria-hidden="true">◎</span> Focar peça'}
+function setMode(m){S.mode=m;ctrlLabels();save();document.documentElement.classList.toggle("simple-mode",m!=="completo");closeDetail(true);renderAll();scrollTo({top:0});toast(m==="completo"?"Modo completo":"Modo simples")}
 
 /* ===================== início ===================== */
 /* versão de arquivo único: imagens e PDFs embutidos viram blob URLs (evita repetir base64 no DOM) */
 function toBlobUrl(u){if(!/^data:/.test(u))return u;const [h,b]=u.split(",");const bin=atob(b),a=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)a[i]=bin.charCodeAt(i);return URL.createObjectURL(new Blob([a],{type:h.slice(5).split(";")[0]}))}
 for(const k in PAGES)PAGES[k]=toBlobUrl(PAGES[k]);for(const k in DOCS)if(DOCS[k])DOCS[k]=toBlobUrl(DOCS[k]);
-applyFs();document.documentElement.classList.toggle("simple-mode",S.mode!=="completo");if(S.simHidden)$("sim").hidden=true;
+applyFs();document.documentElement.classList.toggle("simple-mode",S.mode!=="completo");ctrlLabels();if(S.simHidden)$("sim").hidden=true;
 renderAll();
 if(!S.tourAsked)setTimeout(()=>{$("ask").hidden=false},500);
 </script>
