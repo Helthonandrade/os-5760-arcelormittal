@@ -1,6 +1,6 @@
 # Prompt de contexto — Visualizador da OS 5760 (Âmbar Cenografia)
 
-> Copie tudo abaixo da linha e cole no ChatGPT. Anexe junto, se possível, os arquivos `editavel/index.html` e `ferramentas/contornos.py` deste repositório.
+> Copie tudo abaixo da linha e cole no ChatGPT. Anexe junto o pacote `OS5760-pacote-GPT.zip` (ou, no mínimo, `editavel/index.html` e `ferramentas/contornos.py`). As pranchas e os PDFs originais também estão na pasta do Drive "BAITA > AMBAR > OS 5760 - Pacote Claude".
 
 ---
 
